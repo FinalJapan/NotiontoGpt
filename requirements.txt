@@ -1,2 +1,6 @@
+streamlit
 notion-client
 python-dotenv
+openai
+pandas
+
