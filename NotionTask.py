@@ -7,10 +7,11 @@ load_dotenv()
 notion = Client(auth=os.getenv("NOTION_TOKEN"))
 database_id = os.getenv("NOTION_DATABASE_ID")
 
-# 試しに1件だけ取得してみよう
-response = notion.databases.query(
-    database_id=database_id,
-    page_size=1
-)
-
-print("✅ 取得成功！", response["results"][0]["id"])
+try:
+    response = notion.databases.query(database_id=database_id, page_size=1)
+    print("✅ データ取得成功！")
+    print(response)
+except Exception as e:
+    import traceback
+    print("❌ エラー内容：")
+    traceback.print_exc()
